@@ -1,0 +1,83 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #d55179;
+  width: 350px;
+  height: 580px;
+  border-radius: 20px;
+  padding: 10px 20px;
+}
+
+.container h1 {
+  text-align: center;
+}
+.container img {
+  margin: 0 auto;
+  margin-top: 2em;
+  margin-bottom: 3em;
+  width: 250px;
+  height: 150px;
+  border-radius: 10px;
+}
+
+.container h1 {
+  font-size: 30px;
+}
+
+.container > p {
+  font-size: 15px;
+  color: rgb(80, 80, 80);
+  margin-bottom: 4em;
+}
+
+.shop {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.shop p {
+  font-weight: bold;
+  font-size: 25px;
+  color: black;
+}
+
+.qtd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #eee;
+  padding: 0 0;
+  border-radius: 50px;
+  height: 40%;
+  overflow: hidden;
+  min-width: 80px;
+  height: 25px;
+  margin-bottom: 3em;
+}
+.qtd span {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0 1rem;
+}
+.qtd button {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  padding: 2px 10px;
+  border: none;
+  background-color: transparent;
+  color: #333;
+  cursor: pointer;
+  height: 100%;
+}
+
+.qtd button:hover {
+  background-color: #ddd;
+}
+
+.addToCart {
+  border-radius: 10px;
+  padding: 5px 10px;
+  background-color: greenyellow;
+  cursor: pointer;
+}
