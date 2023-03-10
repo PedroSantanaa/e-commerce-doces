@@ -5,9 +5,18 @@ type Props = {
   name: string;
   url: string;
   value: number;
+  handleLocalStorage(itens: IItens): void;
 };
 
-const Card = ({ name, url, value }: Props) => {
+export interface IItens {
+  name: string;
+  url: string;
+  value: number;
+  qtd: number;
+  total: number;
+}
+
+const Card = ({ name, url, value, handleLocalStorage }: Props) => {
   const [desc, setDesc] = useState<string>("");
   const [qtd, setQtd] = useState<number>(0);
   const description = (name: string): void => {
@@ -44,6 +53,19 @@ const Card = ({ name, url, value }: Props) => {
     }
   };
 
+  const handleCart = () => {
+    if (qtd === 0) return;
+    const item: IItens = {
+      name,
+      url,
+      value,
+      qtd,
+      total: qtd * value,
+    };
+    handleLocalStorage(item);
+    setQtd(0);
+  };
+
   return (
     <div className={styles.container}>
       <h1>{name}</h1>
@@ -57,7 +79,9 @@ const Card = ({ name, url, value }: Props) => {
           <button onClick={handleAdd}>+</button>
         </div>
       </div>
-      <button className={styles.addToCart}>Adicionar ao carrinho</button>
+      <button className={styles.addToCart} onClick={handleCart}>
+        Adicionar ao carrinho
+      </button>
     </div>
   );
 };
