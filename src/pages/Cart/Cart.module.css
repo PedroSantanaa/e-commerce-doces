@@ -1,0 +1,25 @@
+.body {
+  background-color: #739aff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+}
+
+.container {
+  width: 1000px;
+  height: 611px;
+  background-color: #ffffff;
+  padding: 50px 60px;
+  border-radius: 15px;
+  display: flex;
+}
+
+.sideCart {
+  position: absolute;
+  width: 345px;
+  height: 531px;
+  background-color: #565abb;
+  border-radius: 20px;
+  right: 457px;
+}

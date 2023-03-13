@@ -1,4 +1,6 @@
 import { useUserValue } from "../../context/useUserContext";
+//css
+import styles from "./Cart.module.css";
 //interfaces
 import { IItens } from "../../components/Card/Card";
 import { useEffect, useState } from "react";
@@ -17,7 +19,7 @@ const Cart = (props: Props) => {
   const userName = useUserValue();
   return (
     <>
-      <div>{userName?.customer}</div>
+      {/* <div>{userName?.customer}</div>
       <div>
         {productsAtCart &&
           productsAtCart.map((p) => (
@@ -26,6 +28,16 @@ const Cart = (props: Props) => {
               <p>{p.qtd}</p>
             </div>
           ))}
+      </div> */}
+      <div className={styles.body}>
+        <div className={styles.container}>
+          <div className="mainCart">
+            <h1>Shopping cart</h1>
+          </div>
+          <div className={styles.sideCart}>
+            <h1>Card Details</h1>
+          </div>
+        </div>
       </div>
     </>
   );
