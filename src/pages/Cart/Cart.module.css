@@ -23,13 +23,13 @@
 }
 
 .sideCart {
-  position: absolute;
   width: 345px;
   height: 511px;
   background-color: #565abb;
   border-radius: 20px;
-  right: 457px;
   padding: 18px 19px;
+  margin-left: 35px;
+  margin-top: 12px;
 }
 
 .sideCart h1 {
@@ -218,4 +218,28 @@
   /* identical to box height */
   color: #393939;
   text-align: right;
+}
+
+.noItems {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 6em;
+}
+.noItems span {
+  color: red;
+  font-size: 20px;
+}
+.noItems a {
+  border: 1px solid #4de1c1;
+  background: #4de1c1;
+  border-radius: 8px;
+  color: #fefcfc;
+  text-decoration: none;
+  padding: 10px 15px;
+  margin-top: 10px;
+}
+svg {
+  cursor: pointer;
 }

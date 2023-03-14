@@ -5,10 +5,60 @@ import { BsArrowRight } from "react-icons/bs";
 //interfaces
 import { IItens } from "../../components/Card/Card";
 import { useEffect, useState } from "react";
+//router
+import { Link } from "react-router-dom";
 
 type Props = {};
 const Cart = (props: Props) => {
   const [productsAtCart, setProductsAtCart] = useState<IItens[]>([]);
+  const [productsAtCartTotal, setProductsAtCartTotal] = useState<number>(0);
+
+  const handleMinus = (name: string): void => {
+    setProductsAtCart((prevProducts) => {
+      const existingProductIndex = prevProducts.findIndex((p) => p.name === name);
+      // Atualiza a quantidade e o total do produto existente
+      const updatedProduct = { ...prevProducts[existingProductIndex] };
+      if (updatedProduct.qtd > 1) {
+        updatedProduct.qtd -= 1;
+        updatedProduct.total -= updatedProduct.value;
+        return [
+          ...prevProducts.slice(0, existingProductIndex),
+          updatedProduct,
+          ...prevProducts.slice(existingProductIndex + 1),
+        ];
+      } else {
+        return [
+          ...prevProducts.slice(0, existingProductIndex),
+          ...prevProducts.slice(existingProductIndex + 1),
+        ];
+      }
+    });
+  };
+  const handleAdd = (name: string): void => {
+    setProductsAtCart((prevProducts) => {
+      const existingProductIndex = prevProducts.findIndex((p) => p.name === name);
+      // Atualiza a quantidade e o total do produto existente
+      const updatedProduct = { ...prevProducts[existingProductIndex] };
+      if (updatedProduct.qtd >= 0) {
+        updatedProduct.qtd += 1;
+        updatedProduct.total += updatedProduct.value;
+        return [
+          ...prevProducts.slice(0, existingProductIndex),
+          updatedProduct,
+          ...prevProducts.slice(existingProductIndex + 1),
+        ];
+      } else {
+        return [];
+      }
+    });
+  };
+
+  const removeItem = (name: string): void => {
+    const indexOfItemToRemove = productsAtCart.findIndex((p) => p.name === name);
+    const newListOfProducts = [...productsAtCart];
+    newListOfProducts.splice(indexOfItemToRemove, 1);
+    setProductsAtCart(newListOfProducts);
+  };
 
   useEffect(() => {
     const items = localStorage.getItem("products");
@@ -17,6 +67,21 @@ const Cart = (props: Props) => {
       setProductsAtCart(products);
     }
   }, []);
+  useEffect(() => {
+    if (productsAtCart.length === 0) return;
+    localStorage.setItem("products", JSON.stringify(productsAtCart));
+  }, [productsAtCart]);
+
+  useEffect(() => {
+    let total = productsAtCart.reduce((total, product) => total + product.total, 0);
+    setProductsAtCartTotal(total);
+  }, [productsAtCart]);
+
+  useEffect(() => {
+    if (productsAtCart.length === 0) {
+      localStorage.clear();
+    }
+  }, [productsAtCart]);
   const userName = useUserValue();
   return (
     <>
@@ -29,7 +94,13 @@ const Cart = (props: Props) => {
               <p className={styles.customer}>
                 {userName?.customer}: você tem {productsAtCart.length} itens no seu carrinho
               </p>
-              {productsAtCart &&
+              {productsAtCart && productsAtCart.length === 0 ? (
+                <div className={styles.noItems}>
+                  <span>Voce não tem itens no seu carrinho</span>
+                  <Link to="/">Ir para a Home</Link>
+                </div>
+              ) : (
+                productsAtCart &&
                 productsAtCart.map((p) => (
                   <div key={p.name} className={styles.item}>
                     <img src={p.url} alt="logo" />
@@ -37,7 +108,7 @@ const Cart = (props: Props) => {
                     <div>
                       <span className={styles.qtdNumber}>{p.qtd}</span>
                       <div>
-                        <button>
+                        <button onClick={() => handleAdd(p.name)}>
                           <svg
                             width="20"
                             height="9"
@@ -48,7 +119,7 @@ const Cart = (props: Props) => {
                             <path d="M20 8.57143L10 0L0 8.57143H20Z" fill="#393939" />
                           </svg>
                         </button>
-                        <button>
+                        <button onClick={() => handleMinus(p.name)}>
                           <svg
                             width="20"
                             height="9"
@@ -62,7 +133,7 @@ const Cart = (props: Props) => {
                       </div>
                     </div>
                     <p className={styles.totalNumber}>R${p.total}</p>
-                    <p>
+                    <p onClick={() => removeItem(p.name)}>
                       <svg
                         width="25"
                         height="25"
@@ -91,7 +162,8 @@ const Cart = (props: Props) => {
                       </svg>
                     </p>
                   </div>
-                ))}
+                ))
+              )}
             </div>
           </div>
           <div className={styles.sideCart}>
@@ -118,17 +190,17 @@ const Cart = (props: Props) => {
             </form>
             <div className={styles.total}>
               <p>
-                SubTotal <span>R$500</span>
+                SubTotal <span>R${productsAtCartTotal}</span>
               </p>
               <p>
                 Frete <span>Grátis</span>
               </p>
               <p>
-                Total <span>R$500</span>
+                Total <span>R${productsAtCartTotal}</span>
               </p>
             </div>
             <button className={styles.checkout}>
-              R$500
+              R${productsAtCartTotal}
               <span>
                 Finalizar <BsArrowRight />
               </span>
