@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap");
 
 .body {
   background-color: #739aff;
@@ -118,4 +120,102 @@
   justify-content: center;
   align-items: center;
   gap: 4px;
+}
+
+.mainCart {
+  display: flex;
+  flex-direction: column;
+}
+
+.mainCart h1 {
+  color: #1e1e1e;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 27px;
+  padding-bottom: 23px;
+}
+
+.itens {
+  padding-top: 24px;
+  border-top: 1.5px solid #d0cfcf;
+  width: 500px;
+  color: #1e1e1e;
+}
+.itens h2 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+}
+.customer {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 19px;
+}
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 15px;
+  padding: 9px 10px;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+  width: 500px;
+  height: 80px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.itemName {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  width: 100px;
+}
+.item img {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+}
+
+.item div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.item div div {
+  display: flex;
+  flex-direction: column;
+}
+.item div div button {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.qtdNumber {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 100%;
+  color: #393939;
+}
+
+.totalNumber {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  /* identical to box height */
+  color: #393939;
+  text-align: right;
 }
