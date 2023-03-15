@@ -33,3 +33,10 @@
   border-radius: 10px;
   text-align: center;
 }
+
+@media (max-width: 376px) {
+  .header img {
+    width: 80px;
+    margin-right: 10px;
+  }
+}

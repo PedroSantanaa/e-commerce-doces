@@ -1,17 +1,34 @@
 import { useUserValue } from "../../context/useUserContext";
 //css
 import styles from "./Cart.module.css";
+import modalStyles from "./ModalCart.module.css";
 import { BsArrowRight } from "react-icons/bs";
 //interfaces
 import { IItens } from "../../components/Card/Card";
 import { useEffect, useState } from "react";
 //router
 import { Link } from "react-router-dom";
+//modal
+import Modal from "react-modal";
 
 type Props = {};
 const Cart = (props: Props) => {
   const [productsAtCart, setProductsAtCart] = useState<IItens[]>([]);
   const [productsAtCartTotal, setProductsAtCartTotal] = useState<number>(0);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  //Modal Styles
+
+  const handleh1Text = () => {
+    const h1 = document.querySelector(".sideCartTitle");
+    if (window.innerWidth <= 850 && h1) {
+      h1.textContent = "Valor Total";
+    } else if (window.innerWidth > 850 && h1) {
+      h1.textContent = "Detalhes do Cartão";
+    }
+  };
+
+  window.addEventListener("resize", handleh1Text);
 
   const handleMinus = (name: string): void => {
     setProductsAtCart((prevProducts) => {
@@ -94,6 +111,8 @@ const Cart = (props: Props) => {
               <p className={styles.customer}>
                 {userName?.customer}: você tem {productsAtCart.length} itens no seu carrinho
               </p>
+            </div>
+            <div className={styles.boxItems}>
               {productsAtCart && productsAtCart.length === 0 ? (
                 <div className={styles.noItems}>
                   <span>Voce não tem itens no seu carrinho</span>
@@ -167,7 +186,7 @@ const Cart = (props: Props) => {
             </div>
           </div>
           <div className={styles.sideCart}>
-            <h1>Detalhes do Cartão</h1>
+            <h1 className="sideCartTitle">Detalhes do Cartão</h1>
             <form>
               <span>
                 Nome no Cartão:
@@ -205,8 +224,70 @@ const Cart = (props: Props) => {
                 Finalizar <BsArrowRight />
               </span>
             </button>
+            <button className={styles.checkoutQuery}>
+              R${productsAtCartTotal}
+              <span onClick={() => setModalIsOpen(true)}>
+                Pagamento <BsArrowRight />
+              </span>
+            </button>
           </div>
+          <button className={styles.modalCheckOut}>
+            R${productsAtCartTotal}
+            <span onClick={() => setModalIsOpen(true)}>
+              Pagamento <BsArrowRight />
+            </span>
+          </button>
         </div>
+        <Modal
+          isOpen={modalIsOpen}
+          className={modalStyles.modal}
+          overlayClassName={modalStyles.overlay}
+        >
+          <h1>Detalhes do Cartão</h1>
+          <form>
+            <span>
+              Nome no Cartão:
+              <input type="text" name="name" placeholder="Nome" />
+            </span>
+            <span>
+              Número do Cartão:
+              <input type="text" name="name" placeholder="1111 2222 3333 4444" />
+            </span>
+            <div className={modalStyles.monthModal}>
+              <span>
+                Vencimento:
+                <input type="text" name="name" placeholder="mm/aa" />
+              </span>
+              <span>
+                CVV:
+                <input type="text" name="name" placeholder="CVV" />
+              </span>
+            </div>
+          </form>
+          <div className={modalStyles.total}>
+            <p>
+              SubTotal <span>R${productsAtCartTotal}</span>
+            </p>
+            <p>
+              Frete <span>Grátis</span>
+            </p>
+            <p>
+              Total <span>R${productsAtCartTotal}</span>
+            </p>
+          </div>
+
+          <div className={modalStyles.buttons}>
+            <button className={modalStyles.returnButton} onClick={() => setModalIsOpen(false)}>
+              Retornar ao Carrinho
+            </button>
+            <button className={modalStyles.finishButton}>
+              R${productsAtCartTotal}
+              <span>
+                Finalizar <BsArrowRight />
+              </span>
+            </button>
+          </div>
+        </Modal>
       </div>
     </>
   );

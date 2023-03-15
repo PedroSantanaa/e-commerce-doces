@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap");
+
+.modal {
+  background: #565abb;
+  width: 400px;
+  height: 500px;
+  border: none;
+  border-radius: 20px;
+  margin: 40px auto;
+  padding: 10px 15px;
+  font-family: "Poppins";
+}
+.modal h1 {
+  text-align: left;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 33px;
+  color: #fefcfc;
+  margin-bottom: 20px;
+}
+.modal form {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal form span {
+  font-size: 20px;
+  font-weight: 500px;
+  line-height: 21px;
+  color: #fefcfc;
+}
+.modal form input {
+  width: 240px;
+  height: 40px;
+  background: #6268c6;
+  border-radius: 6px;
+  border: none;
+  margin-top: 5px;
+  font-size: 12px;
+  padding: 8px 11px;
+  color: #fefcfc;
+}
+
+.modal form input::placeholder {
+  color: rgb(149, 148, 148);
+}
+.modal .monthModal {
+  display: flex;
+  /* flex-wrap: wrap; */
+  gap: 8px;
+}
+.modal .monthModal span input {
+  width: 150px;
+  margin-bottom: 24px;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.total {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #fefcfc;
+  border-top: 1px solid #5f65c3;
+  padding-top: 16px;
+}
+.total p {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+.buttons {
+  display: flex;
+  gap: 50px;
+  margin-top: 30px;
+}
+.returnButton {
+  border: 1px solid #e608f6;
+  background: #e608f6;
+  border-radius: 8px;
+  color: #fefcfc;
+  text-decoration: none;
+  padding: 10px 15px;
+}
+.finishButton {
+  width: 150px;
+  border: 1px solid #4de1c1;
+  background: #4de1c1;
+  border-radius: 8px;
+  color: #fefcfc;
+  text-decoration: none;
+  padding: 10px 15px;
+}
+.finishButton span {
+  margin-left: 5px;
+}
+
+@media (max-width: 377px) {
+  .modal {
+    width: 350px;
+  }
+}

@@ -5,7 +5,6 @@
 .body {
   background-color: #739aff;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   min-height: 70vh;
@@ -19,7 +18,6 @@
   padding: 50px 60px;
   border-radius: 15px;
   display: flex;
-  flex-wrap: wrap;
 }
 
 .sideCart {
@@ -64,9 +62,11 @@
   margin-top: 5px;
   font-size: 12px;
   padding: 8px 11px;
-  color: #c4c4c4;
+  color: #fefcfc;
 }
-
+.sideCart form input::placeholder {
+  color: white;
+}
 .month {
   display: flex;
   /* flex-wrap: wrap; */
@@ -122,6 +122,9 @@
   gap: 4px;
 }
 
+.checkoutQuery {
+  display: none;
+}
 .mainCart {
   display: flex;
   flex-direction: column;
@@ -135,6 +138,13 @@
   font-size: 18px;
   line-height: 27px;
   padding-bottom: 23px;
+}
+
+.boxItems {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
 }
 
 .itens {
@@ -164,10 +174,8 @@
   border-radius: 15px;
   padding: 9px 10px;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
-  width: 500px;
+  min-width: 295px;
   height: 80px;
-  margin-bottom: 20px;
-  margin-top: 20px;
 }
 .itemName {
   font-family: "Poppins";
@@ -242,4 +250,111 @@
 }
 svg {
   cursor: pointer;
+}
+.modalCheckOut {
+  display: none;
+}
+
+
+/* Responsive */
+
+@media (max-width: 1000px) {
+  .itens {
+    padding-top: 15px;
+    width: 300px;
+  }
+  .item {
+    width: 350px;
+  }
+  .container {
+    width: 850px;
+  }
+}
+@media (max-width: 850px) {
+  .container {
+    width: 95%;
+  }
+  .sideCart {
+    height: 270px;
+  }
+  .sideCart form {
+    display: none;
+  }
+  .checkout {
+    display: none;
+  }
+  .checkoutQuery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 307px;
+    height: 60px;
+    margin-top: 20px;
+    background: #4de1c1;
+    border: none;
+    border-radius: 12px;
+    padding: 18px 24px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #fefcfc;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 800px) {
+  .sideCart {
+    height: 270px;
+    width: 400px;
+    margin-right: 10px;
+  }
+  .checkoutQuery {
+    width: 98%;
+    font-size: 14px;
+    height: 70px;
+  }
+}
+
+@media (max-width: 426px) {
+  .sideCart {
+    display: none;
+  }
+
+  .item {
+    width: 95%;
+    height: 70px;
+    gap: 5px;
+  }
+
+  .modalCheckOut {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 307px;
+    height: 60px;
+    margin-top: 20px;
+    background: #4de1c1;
+    border: none;
+    border-radius: 12px;
+    padding: 18px 24px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #fefcfc;
+    cursor: pointer;
+  }
+  .container {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 376px) {
+  .container {
+    padding: 30px 35px;
+  }
 }
