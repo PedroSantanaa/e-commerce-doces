@@ -9,7 +9,7 @@ Nele é possivel adicionar doces, tirar doces tudo de forma automatica tanto na 
 
 ## Screenshots
 
-![App Screenshot](Screenshot from 2023-04-29 08-30-29.png)
+![App Screenshot](https://prnt.sc/urBH94xPaIBh)
 
 ![Cart Screenshot](https://ibb.co/TYSDW82)
 ## Tech Stack
