@@ -9,9 +9,16 @@ Nele é possivel adicionar doces, tirar doces tudo de forma automatica tanto na 
 
 ## Screenshots
 
-![App Screenshot](https://prnt.sc/urBH94xPaIBh)
+  ### Home Page
+<div align="center">
+<img src="https://i.imgur.com/HN0vMbt.png" width="700px" />
+</div>
 
-![Cart Screenshot](https://ibb.co/TYSDW82)
+  ### Shopping Cart
+  <div align="center">
+<img src="https://i.ibb.co/q7fLJsj/Screenshot-from-2023-04-29-08-31-55.png" width="700px" />
+</div>
+
 ## Tech Stack
 
 **Front End:** React, Context, CSS Module
